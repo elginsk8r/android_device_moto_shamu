@@ -33,3 +33,11 @@ allow camera system_data_file:sock_file unlink;
 #for v4L node "name" access
 allow camera sysfs_graphics:file rw_file_perms;
 allow camera ion_device:chr_file rw_file_perms;
+
+# TODO(b/34274385): Remove this once Camera HAL is guaranteed to not be run in passthrough mode
+# What's going on here is that Camera HAL os talking over sockets to camera daemon, which is
+# permitted. However, those rules target hal_camera rather than hal_camera_server and thus are also
+# granted to all clients of Camera HAL (e.g., cameraserver) which are core components, and
+# socket communications between system components and vendor components are not permted.
+# Once we switch full Treble devices to binderized only mode, this issue will disappear.
+typeattribute camera socket_between_core_and_vendor_violators;
