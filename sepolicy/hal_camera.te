@@ -1,3 +1,8 @@
 allow hal_camera mpdecision_socket:dir r_dir_perms;
 unix_socket_send(hal_camera, camera, camera)
 unix_socket_send(hal_camera, mpdecision, mpdecision)
+
+# TODO(b/34274385): Remove this once Camera HAL is guaranteed to be binderized on full Treble
+# devices. Passthrough Camera HAL makes cameraserver use qmux socket which is a vendor socket.
+# cameraserver, being a non-vendor component, is not permitted to use that socket.
+typeattribute cameraserver socket_between_core_and_vendor_violators;
