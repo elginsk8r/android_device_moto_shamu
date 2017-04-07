@@ -1,5 +1,5 @@
 # TODO(b/36791780): Remove this once radio no longer communicates with qmuxd over sockets
-typeattribute radio socket_between_core_and_vendor_violators;
+typeattribute qmux socket_between_core_and_vendor_violators;
 # Talk to qmuxd (/dev/socket/qmux_radio)
 qmux_socket(radio)
 
@@ -9,3 +9,6 @@ allow radio rild_qmuxd_socket:sock_file rw_file_perms;
 allow radio persist_file:dir search;
 allow radio persist_hiddenmenu_file:dir rw_dir_perms;
 allow radio persist_hiddenmenu_file:file create_file_perms;
+
+# TODO(b/36791780): Remove this once radio no longer communicates with qmuxd over sockets
+typeattribute radio socket_between_core_and_vendor_violators;
