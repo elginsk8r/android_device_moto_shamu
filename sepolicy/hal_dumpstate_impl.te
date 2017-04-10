@@ -1,6 +1,10 @@
 type hal_dumpstate_impl, domain, hal_dumpstate;
 type hal_dumpstate_impl_exec, exec_type, file_type;
 
+<<<<<<< HEAD
+=======
+type hal_dumpstate_impl_exec, exec_type, vendor_file_type, file_type;
+>>>>>>> 005137d1ab (sepolicy: make all exec_types a subset of vendor_file_type)
 init_daemon_domain(hal_dumpstate_impl)
 
 # Access to files for dumping
