@@ -203,7 +203,7 @@ lib/libdmjavaplugin.so
 -priv-app/SprintDM/SprintDM.apk
 
 # DRM
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
