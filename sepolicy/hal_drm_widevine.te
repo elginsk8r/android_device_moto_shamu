@@ -16,3 +16,5 @@ allow hal_drm_widevine { appdomain -isolated_app }:fd use;
 typeattribute hal_drm_widevine data_between_core_and_vendor_violators;
 allow hal_drm_widevine media_data_file:dir create_dir_perms;
 allow hal_drm_widevine media_data_file:file create_file_perms;
+
+allow hal_drm_widevine hal_allocator_server:fd use;
