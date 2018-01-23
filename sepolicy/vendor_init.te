@@ -8,6 +8,7 @@ allow vendor_init {
     mpctl_data_file
     mpctl_socket
     ram_dump_logs
+    radio_data_file
     system_data_file
     time_data_file
     tombstone_data_file
