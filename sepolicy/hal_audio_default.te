@@ -6,3 +6,5 @@ userdebug_or_eng(`
 
 # For interfacing with PowerHAL
 hal_client_domain(hal_audio_default, hal_power)
+
+dontaudit hal_audio_default hal_power_hwservice:hwservice_manager find;
