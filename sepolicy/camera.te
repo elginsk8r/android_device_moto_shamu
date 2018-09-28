@@ -1,6 +1,10 @@
 # Qualcomm MSM camera
 type camera, domain;
-type camera_exec, exec_type, file_type;
+<<<<<<< HEAD
+type camera_exec, system_file_type, exec_type, file_type;
+=======
+type camera_exec, exec_type, vendor_file_type, file_type;
+>>>>>>> 005137d1ab (sepolicy: make all exec_types a subset of vendor_file_type)
 
 # Started by init
 init_daemon_domain(camera)
