@@ -64,7 +64,13 @@ fi
 
 function blob_fixup() {
 	case "${1}" in
-	vendor/lib/mediadrm/libwvdrmengine.so)
+	vendor/bin/hw/android.hardware.drm@1.2-service.widevine)
+		patchelf --remove-needed libhidltransport.so "${2}"
+		patchelf --remove-needed libhwbinder.so "${2}"
+		;;
+	vendor/lib/libwvhidl.so)
+		patchelf --remove-needed libhidltransport.so "${2}"
+		patchelf --remove-needed libhwbinder.so "${2}"
 		patchelf --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v28.so" "${2}"
 		;;
 	esac
