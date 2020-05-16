@@ -202,18 +202,19 @@ lib/libdmjavaplugin.so
 -priv-app/LifetimeData/LifetimeData.apk
 -priv-app/SprintDM/SprintDM.apk
 
-
 # DRM
 bin/qseecomd
-vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libWVStreamControlAPI_L1.so
+
+# DRM - Widevine - from IN2023 (QKQ1.191222.002)
+vendor/bin/hw/android.hardware.drm@1.2-service.widevine|65f79dd7dce028f9595d0f0c4a93bbb4c89c6180
+vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc|68767969f86126ada017fc09af151e299db651d5
+vendor/lib/libwvhidl.so|3959312fdf6131dbbd194f42299bb941608c36ba
 
 # DRM firmware
 vendor/firmware/widevine.b00
