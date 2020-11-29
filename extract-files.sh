@@ -68,6 +68,9 @@ function blob_fixup() {
 		patchelf --remove-needed libhidltransport.so "${2}"
 		patchelf --remove-needed libhwbinder.so "${2}"
 		;;
+	vendor/lib/libril-qc-qmi-1.so)
+		sed -i "s|/system/etc/ril/qcril.db|/vendor/etc/ril/qcril.db|g" "${2}"
+		;;
 	vendor/lib/libwvhidl.so)
 		patchelf --remove-needed libhidltransport.so "${2}"
 		patchelf --remove-needed libhwbinder.so "${2}"
