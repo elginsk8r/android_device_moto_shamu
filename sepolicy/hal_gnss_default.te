@@ -1,16 +1,11 @@
 allow hal_gnss_default vndbinder_device:chr_file rw_file_perms;
 
-#access to /sys/devices/soc0/soc_id and /sys/devices/soc0/hw_platform
-allow hal_gnss sysfs_socinfo:dir search;
-allow hal_gnss sysfs_socinfo:file { read open getattr };
-
-userdebug_or_eng(`
-  allow hal_gnss diag_device:chr_file { read write open ioctl};
-')
-
-# for SUPL/911 related compliance cases
-allow hal_gnss_default netmgrd:unix_stream_socket connectto;
-allow hal_gnss_default self:{
-    netlink_route_socket
-    netlink_socket
-} create_socket_perms_no_ioctl;
+# Most HALs are not allowed to use network sockets. Qcom library
+# libqdi is used across multiple processes which are clients of
+# netmgrd including the GNSS HAL. libqdi first attempts to get the network
+# interface using an IOCTL on a UDP INET socket, which isn't allowed here.
+# If that fails, it falls back to using libc's if_nameindex() which requires
+# a netlink route socket, which HALs may use. Due to the initial
+# attempt to use a UDP socket, we still see a selinux denial,
+# but it is safe to ignore.
+dontaudit hal_gnss_default self:udp_socket create;
